@@ -25,10 +25,6 @@
     <link href="css/offcanvas.css" rel="stylesheet">
     <link href="css/sticky-footer.css" rel="stylesheet">
     <link href="css/mycss.css" rel="stylesheet">
-
-    <!-- CSS for editor -->
-    <link rel="stylesheet" href="css/editor-style.css" />
-    <link rel="stylesheet" href="css/editormd.css" />
   </head>
 
   <body>
@@ -52,7 +48,7 @@
           </ul>
           <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
       </nav>
@@ -67,12 +63,28 @@
                 <a class="nav-link" href="/Articles">All Articles<span id="articles-buttom-number" class="bottom-number badge badge-pill bg-dark align-text-bottom">0</span></a>
             </li>
           </ul>
+          <form class="form-inline mt-2 mt-md-0">
+            <button id="btn-save" class="btn btn-outline-success btn-sm" type="button">Save</button>
+          </form>
         </div>
       </nav>
     </header>
 
     <main role="main" class="full-height container">
-      <iframe src="editor.html" width="100%" height="100%" frameborder="0">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Article Title</span>
+        </div>
+        <input id="article-title" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Discription</span>
+        </div>
+        <input id="discription" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+      </div>
+                      
+      <iframe id="iframe-editor" src="editor.html" width="100%" height="900px" frameborder="0">
         您的浏览器不支持iframe，请升级
       </iframe>
     </main>
@@ -94,27 +106,20 @@
     <script src="/bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
     
     <!-- editor js -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/editormd.min.js"></script>
     <script type="text/javascript">
-			var testEditor;
-            $(function() {
-                testEditor = editormd("test-editormd", {
-                    width   : "90%",
-                    height  : 640,
-                    syncScrolling : "single",
-                    path    : "/editor-lib/"
-                });
-                
-                /*
-                // or
-                testEditor = editormd({
-                    id      : "test-editormd",
-                    width   : "90%",
-                    height  : 640,
-                    path    : "../lib/"
-                });
-                */
+            var ArticleTitle,Discription;
+            $("#btn-save").bind('click', function(){
+              ArticleTitle = document.getElementById("article-title").value;
+              Discription = document.getElementById("discription").value;
+              if(ArticleTitle == null || ArticleTitle == ""){
+                alert("Please input article title ~");
+                return false;
+              }
+              if(Discription == null || Discription == ""){
+                alert("Please input discription ~");
+                return false;
+              }
+              document.getElementById("iframe-editor").contentWindow.save("",ArticleTitle,Discription);
             });
     </script>
   </body>

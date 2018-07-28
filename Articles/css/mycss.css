@@ -1,3 +1,7 @@
-.second-fixed-top{position:fixed;top:50px;right:0;left:0;z-index:1020}
+.second-fixed-top{position:fixed;top:56px;right:0;left:0;z-index:1020}
 .second-navbar{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding:0rem 3rem;}
 .bottom-number{font-size:65%}
+.big-text{font-size:18px}
+a:link,a:visited{text-decoration:none;}
+a:hover{text-decoration:none;color:#333333;}
+a{color:#5a5a5a}

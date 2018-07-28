@@ -60,7 +60,10 @@
               <a class="nav-link" href="/New_Article">New Article</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/Articles">All Articles<span class="sr-only">(current)</span><span id="articles-buttom-number" class="bottom-number badge badge-pill bg-dark align-text-bottom">0</span></a>
+              <a class="nav-link" href="/Articles">All Articles
+                <span class="sr-only">(current)</span>
+                <span id="articles-buttom-number" class="bottom-number badge badge-pill bg-dark align-text-bottom">loading</span>
+              </a>
             </li>
           </ul>
         </div>
@@ -68,6 +71,15 @@
     </header>
 
     <main role="main" class="container">
+      <div id="articles_list" class="my-3 p-3 bg-white rounded box-shadow">
+        <div class="media text-muted pt-3">
+          <a href="" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="text-gray-dark big-text">Loading</strong>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading<br>
+            Loading
+          </a>
+        </div>
+      </div>
     </main>
 
     <!-- FOOTER -->
@@ -85,5 +97,13 @@
     <script src="/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="/bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
+    <script src="js/articles_list.js"></script>
+    <script src="js/count_article.js"></script>
+    <script type="text/javascript">
+      window.onload = function(){
+        articlesList();
+        countArticles();
+      }
+    </script>
   </body>
 </html>

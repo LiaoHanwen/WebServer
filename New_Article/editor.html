@@ -40,32 +40,49 @@
 &lt;!-- 繁體中文 --&gt;
 &lt;script src="/editor/dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
 ```
-</textarea>
+                </textarea>
             </div>
         </div>
         <script src="/editor/examples/js/jquery.min.js"></script>
         <script src="/editor/editormd.min.js"></script>
         <script type="text/javascript">
 			var testEditor;
+            var xmlhttp;
+            if (window.XMLHttpRequest)
+            {
+                //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {
+                // IE6, IE5 浏览器执行代码
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
 
             $(function() {
                 testEditor = editormd("test-editormd", {
-                    width   : "90%",
+                    width   : "100%",
                     height  : "100%",
                     syncScrolling : "single",
                     path    : "../editor/lib/"
                 });
-                
-                /*
-                // or
-                testEditor = editormd({
-                    id      : "test-editormd",
-                    width   : "90%",
-                    height  : 640,
-                    path    : "../lib/"
-                });
-                */
             });
+
+            function save(OriginTitle,ArticleTitle,Discription){
+                xmlhttp.onreadystatechange=function()
+                {
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                    {
+                        alert(xmlhttp.responseText);
+                    }
+                }
+                xmlhttp.open("POST","/Articles/php/save_markdown.php",true);
+                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xmlhttp.send("OriginTitle="+OriginTitle+
+                            "&ArticleTitle="+ArticleTitle+
+                            "&Discription="+Discription+
+                            "&MarkDown="+testEditor.getMarkdown());
+            }
         </script>
     </body>
 </html>
