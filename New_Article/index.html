@@ -60,7 +60,8 @@
               <a class="nav-link" href="/New_Article">New Article<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Articles">All Articles<span id="articles-buttom-number" class="bottom-number badge badge-pill bg-dark align-text-bottom">0</span></a>
+                <a class="nav-link" href="/Articles">All Articles
+                <span id="articles-buttom-number" class="bottom-number badge badge-pill bg-dark align-text-bottom">loading</span></a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
@@ -104,9 +105,14 @@
     <script src="/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="/bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
+    <script src="js/count_article.js"></script>
     
     <!-- editor js -->
     <script type="text/javascript">
+            window.onload = function(){
+              countArticles();
+            }
+
             var ArticleTitle,Discription;
             $("#btn-save").bind('click', function(){
               ArticleTitle = document.getElementById("article-title").value;

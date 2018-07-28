@@ -20,26 +20,7 @@
 
 #### Editor.md directory
 
-    editor.md/
-            lib/
-            css/
-            scss/
-            tests/
-            fonts/
-            images/
-            plugins/
-            examples/
-            languages/     
-            editormd.js
-            ...
 
-```html
-&lt;!-- English --&gt;
-&lt;script src="/editor/dist/js/languages/en.js"&gt;&lt;/script&gt;
-
-&lt;!-- 繁體中文 --&gt;
-&lt;script src="/editor/dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
-```
                 </textarea>
             </div>
         </div>
@@ -62,7 +43,7 @@
             $(function() {
                 testEditor = editormd("test-editormd", {
                     width   : "100%",
-                    height  : "100%",
+                    height  : "800px",
                     syncScrolling : "single",
                     path    : "../editor/lib/"
                 });
