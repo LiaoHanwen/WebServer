@@ -5,22 +5,11 @@
         <title>Simple example - Editor.md examples</title>
         <link rel="stylesheet" href="/editor/examples/css/style.css" />
         <link rel="stylesheet" href="/editor/css/editormd.css" />
-    <body>
+    <body onload="testEditor.previewing()">
         <div id="layout">
             <div id="test-editormd">
-                <textarea style="display:none;">[TOC]
-
-#### Disabled options
-
-- TeX (Based on KaTeX);
-- Emoji;
-- Task lists;
-- HTML tags decode;
-- Flowchart and Sequence Diagram;
-
-#### Editor.md directory
-
-
+                <textarea id="markdown" style="display:none;">
+## Loading...
                 </textarea>
             </div>
         </div>
@@ -28,28 +17,18 @@
         <script src="/editor/editormd.min.js"></script>
         <script type="text/javascript">
 			var testEditor;
-            var xmlhttp;
-            if (window.XMLHttpRequest)
-            {
-                //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-                xmlhttp=new XMLHttpRequest();
-            }
-            else
-            {
-                // IE6, IE5 浏览器执行代码
-                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-            }
 
             $(function() {
                 testEditor = editormd("test-editormd", {
                     width   : "100%",
                     height  : "800px",
                     syncScrolling : "single",
+                    readOnly: true,
                     path    : "../editor/lib/"
                 });
             });
 
-            function save(OriginTitle,ArticleTitle,Discription){
+            function loadmd(title){
                 var xmlhttp;
                 if (window.XMLHttpRequest){
                     xmlhttp=new XMLHttpRequest();
@@ -60,15 +39,12 @@
                 {
                     if (xmlhttp.readyState==4 && xmlhttp.status==200)
                     {
-                        alert(xmlhttp.responseText);
+                        testEditor.setSelection({line:0,ch:0},{line:1,ch:0});
+                        testEditor.replaceSelection(xmlhttp.responseText);
                     }
                 }
-                xmlhttp.open("POST","/Articles/php/save_markdown.php",true);
-                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-                xmlhttp.send("OriginTitle="+OriginTitle+
-                            "&ArticleTitle="+ArticleTitle+
-                            "&Discription="+Discription+
-                            "&MarkDown="+testEditor.getMarkdown());
+                xmlhttp.open("GET","/Article/php/getmd.php?article_title="+title,true);
+                xmlhttp.send();
             }
         </script>
     </body>

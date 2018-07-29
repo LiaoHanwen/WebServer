@@ -25,7 +25,7 @@
         $time = $row["time"];
         echo <<<EOF
         <div class="media text-muted pt-3">
-            <a href="/Article/?article=$article_title" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <a href="/Article/?$article_title" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                 <strong class="text-gray-dark big-text">$article_title</strong>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$time<br>
                 $description

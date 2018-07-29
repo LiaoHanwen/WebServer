@@ -55,47 +55,5 @@
         die("$ArticleTitle has existed");
     }
 
-    // //delete origin file    (untested)
-    // if($OriginTitle != "")
-    // {
-    //     $sql_delete = "DELETE FROM `articles` WHERE `articles`.`article_title` = '".$OriginTitle."' ";
-    //     if (!mysqli_query($conn, $sql_delete)) {
-    //         echo "delete error: " . $sql_delete . "<br>" . mysqli_error($conn);
-    //     }
-
-    //     //copy pictures
-    //     $source_pic_dir = $dir_delete."/pictures";
-    //     $dest_pic_dir = $dir_new."/pictures";
-    //     function copydir($source, $dest)
-    //     {
-    //         if (!file_exists($dest)) mkdir($dest);
-    //         $handle = opendir($source);
-    //         while (($item = readdir($handle)) !== false) {
-    //             if ($item == '.' || $item == '..') continue;
-    //             $_source = $source . '/' . $item;
-    //             $_dest = $dest . '/' . $item;
-    //             if (is_file($_source)) copy($_source, $_dest);
-    //             if (is_dir($_source)) copydir($_source, $_dest);
-    //         }
-    //         closedir($handle);
-    //     }
-    //     copydir($source_pic_dir,$dest_pic_dir);
-
-    //     //delete origin file
-    //     function rmdirs($path)
-    //     {
-    //         $handle = opendir($path);
-    //         while (($item = readdir($handle)) !== false) {
-    //             if ($item == '.' || $item == '..') continue;
-    //             $_path = $path . '/' . $item;
-    //             if (is_file($_path)) unlink($_path);
-    //             if (is_dir($_path)) rmdirs($_path);
-    //         }
-    //         closedir($handle);
-    //         return rmdir($path);
-    //     }
-    //     rmdirs($dir_delete);
-    // }
-
     mysqli_close($conn);
 ?>

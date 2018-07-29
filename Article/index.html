@@ -15,7 +15,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Liao Hanwen</title>
+    <title id="web-title">Liao Hanwen</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,6 +25,7 @@
     <link href="css/offcanvas.css" rel="stylesheet">
     <link href="css/sticky-footer.css" rel="stylesheet">
     <link href="css/mycss.css" rel="stylesheet">
+    <link href="css/blog.css" rel="stylesheet">
   </head>
 
   <body>
@@ -65,27 +66,17 @@
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
-            <button id="btn-save" class="btn btn-outline-success btn-sm" type="button">Save</button>
+            <button id="btn-edit" class="space-left-right btn btn-outline-primary btn-sm" type="button">Edit</button>
+            <button id="btn-delete" class="space-left-right btn btn-outline-danger btn-sm" type="button">Delete</button>
           </form>
         </div>
       </nav>
     </header>
 
     <main role="main" class="full-height container">
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Article Title</span>
-        </div>
-        <input id="article-title" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Description</span>
-        </div>
-        <input id="description" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-      </div>
-                      
-      <iframe id="iframe-editor" allowTransparency="true" src="editor.html" width="100%" height="900px" frameborder="0">
+      <h2 id="article-title" class="blog-post-title">loading</h2>
+      <p id="description" class="blog-post-meta">loading</p>
+      <iframe id="iframe-editor" src="editor.html" width="100%" height="900px" frameborder="0">
         您的浏览器不支持iframe，请升级
       </iframe>
     </main>
@@ -109,24 +100,57 @@
     
     <!-- editor js -->
     <script type="text/javascript">
-            window.onload = function(){
-              countArticles();
+            var title,description,time;
+            function getTitle(){
+              var url = window.location.href;
+              title = url.split("?")[1];
+              title = decodeURIComponent(title);
+              document.getElementById("iframe-editor").contentWindow.loadmd(title);
+              document.getElementById("web-title").innerHTML=title;
+              document.getElementById("article-title").innerHTML=title;
+              var xmlhttp;
+              if (window.XMLHttpRequest){
+                  xmlhttp=new XMLHttpRequest();
+              }else{
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+              }
+              xmlhttp.onreadystatechange=function()
+                {
+                  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                  {
+                    var response = xmlhttp.responseText;
+                    description = response.split("&")[1];
+                    time = response.split("&")[2];
+                    document.getElementById("description").innerHTML=time+"<br>"+description;
+                  }
+                }
+              xmlhttp.open("GET","/Article/php/select_article.php?article_title="+title,true);
+              xmlhttp.send();
             }
 
-            var ArticleTitle,Description;
-            $("#btn-save").bind('click', function(){
-              ArticleTitle = document.getElementById("article-title").value;
-              Description = document.getElementById("description").value;
-              if(ArticleTitle == null || ArticleTitle == ""){
-                alert("Please input article title ~");
-                return false;
+            $("#btn-delete").bind('click', function(){
+              var xmlhttp;
+              if (window.XMLHttpRequest){
+                  xmlhttp=new XMLHttpRequest();
+              }else{
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
               }
-              if(Description == null || Description == ""){
-                alert("Please input description ~");
-                return false;
-              }
-              document.getElementById("iframe-editor").contentWindow.save("",ArticleTitle,Description);
+              xmlhttp.onreadystatechange=function()
+                {
+                  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                  {
+                    alert(xmlhttp.responseText);
+                    window.location.href="/Articles";
+                  }
+                }
+              xmlhttp.open("GET","/Article/php/delete_article.php?article_title="+title,true);
+              xmlhttp.send();
             });
+
+            window.onload = function(){
+              countArticles();
+              getTitle();
+            }
     </script>
   </body>
 </html>
