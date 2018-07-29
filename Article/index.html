@@ -129,22 +129,26 @@
             }
 
             $("#btn-delete").bind('click', function(){
-              var xmlhttp;
-              if (window.XMLHttpRequest){
-                  xmlhttp=new XMLHttpRequest();
-              }else{
-                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-              }
-              xmlhttp.onreadystatechange=function()
-                {
-                  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-                  {
-                    alert(xmlhttp.responseText);
-                    window.location.href="/Articles";
-                  }
+              var delete_confirm = confirm("Delete <"+title+"> ?")
+              if(delete_confirm==true){
+                var xmlhttp;
+                if (window.XMLHttpRequest){
+                    xmlhttp=new XMLHttpRequest();
+                }else{
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
                 }
-              xmlhttp.open("GET","/Article/php/delete_article.php?article_title="+title,true);
-              xmlhttp.send();
+                xmlhttp.onreadystatechange=function()
+                  {
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                    {
+                      alert(xmlhttp.responseText);
+                      window.location.href="/Articles";
+                    }
+                  }
+                xmlhttp.open("GET","/Article/php/delete_article.php?article_title="+title,true);
+                xmlhttp.send();
+              }
+              
             });
 
             window.onload = function(){
