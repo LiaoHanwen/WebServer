@@ -8,37 +8,13 @@
     <body>
         <div id="layout">
             <div id="test-editormd">
-                <textarea style="display:none;">[TOC]
-
-#### Disabled options
-
-- TeX (Based on KaTeX);
-- Emoji;
-- Task lists;
-- HTML tags decode;
-- Flowchart and Sequence Diagram;
-
-#### Editor.md directory
-
-
-                </textarea>
+                <textarea style="display:none;"></textarea>
             </div>
         </div>
         <script src="/editor/examples/js/jquery.min.js"></script>
         <script src="/editor/editormd.min.js"></script>
         <script type="text/javascript">
 			var testEditor;
-            var xmlhttp;
-            if (window.XMLHttpRequest)
-            {
-                //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-                xmlhttp=new XMLHttpRequest();
-            }
-            else
-            {
-                // IE6, IE5 浏览器执行代码
-                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-            }
 
             $(function() {
                 testEditor = editormd("test-editormd", {

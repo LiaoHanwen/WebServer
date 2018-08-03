@@ -5,7 +5,7 @@
         <title>Simple example - Editor.md examples</title>
         <link rel="stylesheet" href="/editor/examples/css/style.css" />
         <link rel="stylesheet" href="/editor/css/editormd.css" />
-    <body onload="testEditor.previewing()">
+    <body>
         <div id="layout">
             <div id="test-editormd">
                 <textarea id="markdown" style="display:none;">## Loading...</textarea>
@@ -21,10 +21,31 @@
                     width   : "100%",
                     height  : "800px",
                     syncScrolling : "single",
-                    readOnly: true,
                     path    : "../editor/lib/"
                 });
             });
+
+            function save(OriginTitle,ArticleTitle,Discription){
+                var xmlhttp;
+                if (window.XMLHttpRequest){
+                    xmlhttp=new XMLHttpRequest();
+                }else{
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange=function()
+                {
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                    {
+                        alert(xmlhttp.responseText);
+                    }
+                }
+                xmlhttp.open("POST","/Articles/php/save_markdown.php",true);
+                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xmlhttp.send("OriginTitle="+OriginTitle+
+                            "&ArticleTitle="+ArticleTitle+
+                            "&Discription="+Discription+
+                            "&MarkDown="+testEditor.getMarkdown());
+            }
 
             function loadmd(title){
                 var xmlhttp;
