@@ -12,7 +12,7 @@
     }
 
     //count from mysql
-    $sql = "SELECT COUNT(*) AS NUM FROM articles;";
+    $sql = "SELECT COUNT(*) AS NUM FROM articles";
     $result;
     if (!($result=mysqli_query($conn, $sql))) {
         die("count error: " . $sql . "<br>" . mysqli_error($conn));

@@ -21,10 +21,10 @@
     <link href="/bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/css/carousel.css" rel="stylesheet">
-    <link href="/css/offcanvas.css" rel="stylesheet">
-    <link href="/css/sticky-footer.css" rel="stylesheet">
-    <link href="/css/mycss.css" rel="stylesheet">
+    <link href="css/carousel.css" rel="stylesheet">
+    <link href="css/offcanvas.css" rel="stylesheet">
+    <link href="css/sticky-footer.css" rel="stylesheet">
+    <link href="css/mycss.css" rel="stylesheet">
   </head>
 
   <body>
@@ -48,8 +48,9 @@
           </ul>
           <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-light my-2 space-left-right my-sm-0" type="submit">Search</button>
           </form>
+          <button id="log-in" class="btn space-left-right btn-outline-success my-2 my-sm-0">Log in</button>
         </div>
       </nav>
     </header>
@@ -120,5 +121,11 @@
     <script src="/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="/bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
+
+    <script type="text/javascript">
+      $("#log-in").bind('click', function(){
+        window.location.href="/Log_In";
+      });
+    </script>
   </body>
 </html>

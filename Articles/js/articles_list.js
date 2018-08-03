@@ -14,7 +14,7 @@ function articlesList(){
     {
         if (xmlhttp.readyState==4 && xmlhttp.status==200)
         {
-        document.getElementById("articles_list").innerHTML=xmlhttp.responseText;
+            document.getElementById("articles_list").innerHTML=xmlhttp.responseText;
         }
     }
     xmlhttp.open("GET","/Articles/php/articles_list.php",true);
