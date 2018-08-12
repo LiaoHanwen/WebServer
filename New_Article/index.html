@@ -116,6 +116,7 @@
             }
 
             var ArticleTitle,Description;
+            var Title = "";
             $("#btn-save").bind('click', function(){
               ArticleTitle = document.getElementById("article-title").value;
               Description = document.getElementById("description").value;
@@ -127,7 +128,8 @@
                 alert("Please input description ~");
                 return false;
               }
-              document.getElementById("iframe-editor").contentWindow.save("",ArticleTitle,Description);
+              document.getElementById("iframe-editor").contentWindow.save(Title,ArticleTitle,Description);
+              Title = ArticleTitle;
             });
     </script>
   </body>

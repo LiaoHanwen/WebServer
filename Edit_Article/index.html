@@ -153,6 +153,7 @@
                 return false;
               }
               document.getElementById("iframe-editor").contentWindow.save(title,ArticleTitle,Description);
+              title = ArticleTitle;
             });
 
             window.onload = function(){
