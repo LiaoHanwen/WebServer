@@ -1,2 +1,4 @@
 /.vscode
 /Articles_Storage/*
+
+!/Articles_Storage/README.MD
