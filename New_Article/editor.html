@@ -16,12 +16,21 @@
         <script type="text/javascript">
 			var testEditor;
 
+            var title;
+
+            function setTitle(newTitle){
+                title = newTitle;
+            }
+
             $(function() {
                 testEditor = editormd("test-editormd", {
                     width   : "100%",
                     height  : "800px",
                     syncScrolling : "single",
-                    path    : "../editor/lib/"
+                    path    : "../editor/lib/",
+                    imageUpload    : true,
+                    imageFormats   : ["jpg", "jpeg", "gif", "png"],
+                    imageUploadURL : "/php/image_upload.php"
                 });
             });
 
