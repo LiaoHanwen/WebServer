@@ -24,6 +24,22 @@
         if(!file_exists($dir_delete)){
             die("error: original file does not exsit");
         }else{
+            //mysql find time
+            $sql_get_time = "SELECT time,description FROM articles WHERE article_title='".$OriginTitle."'";
+            $result;
+            if (!($result=mysqli_query($conn, $sql_get_time))) {
+                die("count error: " . $sql . "<br>" . mysqli_error($conn));
+            }
+            $row = mysqli_fetch_assoc($result);
+            $d = strtotime($row["time"]);
+            $time = date("Y-m-d H-i-s", $d);
+            $dis = $row["description"];
+
+            //rename file
+            $file_old = $dir_delete."/".$OriginTitle.".md";
+            $file_rename = $dir_delete."/".$time." && ".$OriginTitle." && ".$dis.".md";
+            rename($file_old,$file_rename);
+
             rename($dir_delete,$dir_new);
 
             //delete from mysql
