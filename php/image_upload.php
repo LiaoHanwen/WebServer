@@ -37,7 +37,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
             move_uploaded_file($_FILES["file"]["tmp_name"], "../image_upload/" . $_FILES["file"]["name"]);
             $e->success="1";
             $e->message="success";
-            $e->url="/image_upload/".$_FILES["file"]["name"];
+            $e->url="localhost/image_upload/".$_FILES["file"]["name"];
         }
     }
 }
