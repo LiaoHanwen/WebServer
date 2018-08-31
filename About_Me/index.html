@@ -21,7 +21,7 @@
     <link href="/bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/cover.css" rel="stylesheet">
+    <link href="css/carousel.css" rel="stylesheet">
     <link href="css/offcanvas.css" rel="stylesheet">
     <link href="css/sticky-footer.css" rel="stylesheet">
     <link href="css/mycss.css" rel="stylesheet">
@@ -36,34 +36,63 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/Articles">Articles</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/About_Me">About Me</a>
+            <li class="nav-itemactive">
+              <a class="nav-link" href="/About_Me">About Me<span class="sr-only">(current)</span></a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light my-2 space-left-right my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
-          <button id="log-in" class="btn space-left-right btn-outline-success my-2 my-sm-0">Log in</button>
         </div>
       </nav>
+
     </header>
 
-    <main role="main" style="text-align:center;">
-      <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <main role="main" class="inner cover">
-          <img src="/image/dark.jpg" width="100%">
-          <h1 class="cover-heading" style="font-family: Segoe Script;font-size: 3.5rem;">Under Construction</h1>
-          <p class="lead"></p>
-        </main>
+    <main role="main" class="container">
+      <div id="articles_list" class="my-3 p-3 bg-white rounded box-shadow">
+        <div class="media text-muted pt-3">
+          <p href="" class="media-body pb-3 mb-0 lh-125 border-bottom border-gray row margin-0">
+            <strong class="text-gray-dark big-text col-2">University</strong>
+            <a class="col-10">Beijing University of Posts and Telecommunications</a>
+            <strong class="text-gray-dark big-text col-2">School</strong>
+            <a class="col-10">School of Information and Communication Engineering</a>
+            <strong class="text-gray-dark big-text col-2">Major</strong>
+            <a class="col-10">Communication Engineering</a>
+          </p>
+        </div>
+        <div class="media text-muted pt-3">
+          <p href="" class="media-body pb-3 mb-0 lh-125 border-bottom border-gray row margin-0">
+            <strong class="text-gray-dark big-text col-2">GitHub</strong>
+            <a href="https://github.com/LiaoHanwen" target="_blank" class="col-10">https://github.com/LiaoHanwen</a>
+          </p>
+        </div>
+        <div class="media text-muted pt-3">
+          <p href="" class="media-body pb-3 mb-0 lh-125 border-bottom border-gray row margin-0">
+            <strong class="text-gray-dark big-text col-2">Facebook</strong>
+            <a href="https://www.facebook.com/people/Hanwen-Liao/100009628211895" target="_blank" class="col-10">https://www.facebook.com/people/Hanwen-Liao/100009628211895</a>
+          </p>
+        </div>
+        <div class="media text-muted pt-3">
+          <p href="" class="media-body pb-3 mb-0 lh-125 border-bottom border-gray row margin-0">
+            <strong class="text-gray-dark big-text col-2">Email</strong>
+            <a href="mailto:work@liaohanwen.com" target="_blank" class="col-10">work@liaohanwen.com</a>
+          </p>
+        </div>
       </div>
     </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p class="float-right"><a href="#">Back to top</a></p>
+      <p>备案号：京ICP备17044828号</p>
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -74,11 +103,6 @@
     <script src="/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="/bootstrap-4.0.0/assets/js/vendor/holder.min.js"></script>
-
-    <script type="text/javascript">
-      $("#log-in").bind('click', function(){
-        window.location.href="/Log_In";
-      });
     </script>
   </body>
 </html>
